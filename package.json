@@ -1,0 +1,11 @@
+{
+  "name": "test_app",
+  "version": "0.0.1",
+  "license": "MIT",
+  "cacheDirectories": [
+    "node_modules"
+  ],
+  "dependencies": {
+    "react": "^15.2.1"
+  }
+}

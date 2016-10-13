@@ -1,0 +1,5 @@
+.env
+public/attachments
+node_modules/*
+tmp/*
+log/*

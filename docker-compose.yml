@@ -1,0 +1,6 @@
+web:
+  build: .
+  volumes:
+    - .:/app
+    - ~/.ssh:/.ssh
+    - ~/.bash_history:/.bash_history

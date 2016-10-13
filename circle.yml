@@ -1,0 +1,18 @@
+machine:
+  python:
+    version: 2.7.3
+  services:
+    - docker
+
+dependencies:
+  cache_directories:
+    - "~/docker"
+  pre:
+  override:
+    - if [[ -e ~/docker/image.tar ]]; then docker load -i ~/docker/image.tar; fi
+    - docker-compose -f docker-compose.ci.yml build web
+    - mkdir -p ~/docker; docker save testapp_web:latest > ~/docker/image.tar
+
+test:
+  override:
+    - exit 0
