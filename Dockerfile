@@ -1,6 +1,6 @@
 FROM node
 
-RUN npm install --global yarn bower webpack
+RUN npm install --global yarn
 RUN mkdir -p ~/.yarn-cache/
 RUN chown -R root:root ~/.yarn-cache/
 
