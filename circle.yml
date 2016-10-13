@@ -12,7 +12,7 @@ dependencies:
   pre:
   override:
     - if [[ -e ~/docker/image.tar ]]; then docker load -i ~/docker/image.tar; fi
-    - docker-compose -f docker-compose.ci.yml build web
+    - docker-compose -f docker-compose.yml build web
     - mkdir -p ~/docker; docker save testapp_web:latest > ~/docker/image.tar
 
 test:
