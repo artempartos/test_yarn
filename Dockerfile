@@ -1,16 +1,26 @@
 FROM node
 
-# RUN npm install --global yarn
-RUN curl -o- -L https://yarnpkg.com/install.sh | bash
+RUN mkdir -p ~/app/node_modules
 
-RUN mkdir -p /app
-WORKDIR /app
+WORKDIR /home/foo/app
 
 COPY yarn.lock yarn.lock
 COPY package.json package.json
 
-RUN $HOME/.yarn/bin/yarn install
+RUN adduser foo
+RUN chown -R foo /home/foo
+RUN chown -R foo /usr/local
 
-ADD . /app
+USER foo
+
+RUN npm install --global yarn
+
+
+
+RUN ls -la ~/app
+
+RUN yarn install
+
+ADD . /home/foo/app
 
 CMD bash
