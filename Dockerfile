@@ -1,26 +1,17 @@
 FROM node
 
-RUN mkdir -p ~/app/node_modules
+RUN mkdir -p /root
+RUN usermod -d /root root
+WORKDIR /app
 
-WORKDIR /home/foo/app
+RUN npm install --global yarn
 
 COPY yarn.lock yarn.lock
 COPY package.json package.json
 
-RUN adduser foo
-RUN chown -R foo /home/foo
-RUN chown -R foo /usr/local
-
-USER foo
-
-RUN npm install --global yarn
-
-
-
-RUN ls -la ~/app
 
 RUN yarn install
 
-ADD . /home/foo/app
+ADD . /app
 
 CMD bash
